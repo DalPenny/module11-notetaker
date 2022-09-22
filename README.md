@@ -33,6 +33,7 @@
   run " node  server.js" and follow the prompt, once you see that it's listening, open the browser for that port number 
   
   ## Screenshot
+  <img width="1440" alt="Screen Shot" src="https://github.com/DalPenny/module11-notetaker/blob/52d72d18ff6c9ad2330835ca31ead349a5c7f1ed/public/assets/images/herokuscreenshot.png">
   
   ## Link to Application:
   https://sleepy-plains-88408.herokuapp.com/
