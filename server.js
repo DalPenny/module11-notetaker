@@ -5,7 +5,8 @@ const fs = require('fs');
 // const uuid = require('./helpers/uuid'); //to check if can use to id notes for deleting purpose
 const txtNotes = require('./db/db.json');
 
-const PORT = 3001;
+//when promote to heroku, this env variable is used, if no env, 3001 is default 
+const PORT = process.env.PORT || 3001;
 
 const app = express();
 
