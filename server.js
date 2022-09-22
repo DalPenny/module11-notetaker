@@ -49,7 +49,11 @@ function addToNotes(body, currentNotes) {
     { let currentNotes = []; 
         currentNotes.push(0);}
 
-    
+    //assigning first value in db.json to body id
+    // and increment it to current notes for next note to use
+    body.id = currentNotes[0];
+    currentNotes[0]++;
+
     currentNotes.push(newNote);
     fs.writeFile(path.join(__dirname, './db/db.json'), 
             JSON.stringify(currentNotes), (err) => 
@@ -67,6 +71,33 @@ app.post('/api/notes', (req, res) => {
     const newNote = addToNotes(req.body, txtNotes);
     res.json(newNote);
 });
+
+//function to delete
+function deleteNote(id, currentNotes) {
+    for (let i = 0; i < currentNotes.length; i++) {
+        let note = currentNotes[i];
+
+        if (note.id == id) {
+            currentNotes.splice(i, 1);
+            
+            //asynchronus writefile will update the file, changes the file when the file has been updated
+            fs.writeFileSync(
+                path.join(__dirname, './db/db.json'),
+                JSON.stringify(currentNotes)
+            );
+
+            break;
+        }
+    }
+}
+
+    //req.params.id contains the id to be deleted
+app.delete('/api/notes/:id', (req, res) => {
+    deleteNote(req.params.id, txtNotes);
+    res.json(true);
+});
+
+
 
 
 //listening for port

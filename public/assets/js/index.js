@@ -31,7 +31,6 @@ const getNotes = () =>
     headers: {
       'Content-Type': 'application/json',
     },
-    // body: JSON.stringify(reveiw),
   });
 
 //save object note to json format
